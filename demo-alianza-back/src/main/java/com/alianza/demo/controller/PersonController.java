@@ -3,7 +3,6 @@ package com.alianza.demo.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +19,7 @@ import com.alianza.demo.dto.PersonDto;
 import com.alianza.demo.entity.Person;
 import com.alianza.demo.service.PersonService;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -41,22 +41,13 @@ public class PersonController {
         if(!personService.existsBySharedKey(keyword))
             return new ResponseEntity(new Mensaje("Person not exist"), HttpStatus.NOT_FOUND);        
         List<Person> list = personService.findBySharedKeyContaining(keyword);
-        return new ResponseEntity(list, HttpStatus.OK);
-        
+        return new ResponseEntity(list, HttpStatus.OK);  
     }
     
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody PersonDto personDto){
-        if(StringUtils.isBlank(personDto.getSharedKey()))
-            return new ResponseEntity(new Mensaje("el SharedKey es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(StringUtils.isBlank(personDto.getBussinesId()))
-            return new ResponseEntity(new Mensaje("el BussinesId es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(StringUtils.isBlank(personDto.getEmail()))
-            return new ResponseEntity(new Mensaje("el Email es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(StringUtils.isBlank(personDto.getMobileNumber()))
-            return new ResponseEntity(new Mensaje("el MobileNumber es obligatorio"), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> create(@Valid @RequestBody PersonDto personDto){
         if(personService.existsBySharedKey(personDto.getSharedKey()))
-            return new ResponseEntity(new Mensaje("ese SharedKey ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Object>(new Mensaje("ese SharedKey ya existe"), HttpStatus.BAD_REQUEST);
         Person person = new Person();
         
         person.setSharedKey(personDto.getSharedKey());
@@ -65,16 +56,15 @@ public class PersonController {
         person.setMobileNumber(personDto.getMobileNumber());
         person.setCreatedAt(LocalDateTime.now());
         personService.save(person);
-        return new ResponseEntity(new Mensaje("person create"), HttpStatus.OK);
+        return new ResponseEntity<Object>(new Mensaje("person create"), HttpStatus.CREATED);
     }
 
 
-    @DeleteMapping("/delete/{id}")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")int id){
-        if(!personService.existsById(id))
-            return new ResponseEntity(new Mensaje("No exist"), HttpStatus.NOT_FOUND);
         personService.delete(id);
-        return new ResponseEntity(new Mensaje("person delete"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("person delete"), HttpStatus.ACCEPTED);
     }
 
 

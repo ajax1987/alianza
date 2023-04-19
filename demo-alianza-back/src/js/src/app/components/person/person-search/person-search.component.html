@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+                <div class="d-flex ">
+                    <input #myInput type="text" class="form-control me-2" type="search" placeholder="Search"
+                        aria-label="Search" (keyup.enter)="doSearch(myInput.value)" />
+
+                    <button class="btn btn-outline-success" (click)="doSearch(myInput.value)">
+                        Search
+                    </button>
+
+                </div>
+
+        </div>
+    </div>
+</div>

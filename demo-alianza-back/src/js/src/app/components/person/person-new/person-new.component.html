@@ -1,0 +1,55 @@
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Nuevo Cliente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="formValue">
+
+                    <div class="form-group">
+                        <label for="SharedKey">SharedKey</label>
+                        <input type="text" formControlName="sharedKey" class="form-control" id="sharedKey"
+                            placeholder="Enter SharedKey" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bussinesId">BussinesId</label>
+                        <input type="text" formControlName="bussinesId" class="form-control" id="bussinesId"
+                            placeholder="Enter BussinesId" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobileNumber">MobileNumber</label>
+                        <input type="number" formControlName="mobileNumber" class="form-control" id="mobileNumber"
+                            placeholder="Enter MobileNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" formControlName="email" class="form-control" id="email"
+                            placeholder="Enter Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="createdAt">star date</label>
+                        <input type="date" formControlName="createdAt" class="form-control" id="createdAt"
+                            placeholder="Enter createdAt" required>
+                    </div>
+
+                    <br>
+
+                    <button type="button" class="btn btn-primary" (click)="AddPerson()"[disabled]="formValue.invalid">Register</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
