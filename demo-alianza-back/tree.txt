@@ -1,0 +1,152 @@
+Folder PATH listing for volume System
+Volume serial number is 3C60-EAC1
+C:.
+¦   .classpath
+¦   .gitignore
+¦   .project
+¦   HELP.md
+¦   mvnw
+¦   mvnw.cmd
+¦   pom.xml
+¦   tree.txt
+¦   
++---.idea
+¦       .gitignore
+¦       compiler.xml
+¦       encodings.xml
+¦       jarRepositories.xml
+¦       jpa-buddy.xml
+¦       misc.xml
+¦       runConfigurations.xml
+¦       workspace.xml
+¦       
++---.mvn
+¦   +---wrapper
+¦           maven-wrapper.jar
+¦           maven-wrapper.properties
+¦           
++---.settings
+¦       org.eclipse.core.resources.prefs
+¦       org.eclipse.jdt.core.prefs
+¦       org.eclipse.jdt.ui.prefs
+¦       org.eclipse.ltk.core.refactoring.prefs
+¦       org.springframework.ide.eclipse.prefs
+¦       org.springframework.ide.eclipse.xml.namespaces.prefs
+¦       
++---src
+    +---js
+    ¦   ¦   .browserslistrc
+    ¦   ¦   .editorconfig
+    ¦   ¦   .gitignore
+    ¦   ¦   angular.json
+    ¦   ¦   karma.conf.js
+    ¦   ¦   package-lock.json
+    ¦   ¦   package.json
+    ¦   ¦   README.md
+    ¦   ¦   tsconfig.app.json
+    ¦   ¦   tsconfig.json
+    ¦   ¦   tsconfig.spec.json
+    ¦   ¦   yarn.lock
+    ¦   ¦   
+    ¦   +---.angular
+    ¦   ¦   +---cache
+    ¦   +---.vscode
+    ¦   ¦       extensions.json
+    ¦   ¦       launch.json
+    ¦   ¦       tasks.json
+    ¦   ¦       
+    ¦   +---src
+    ¦       ¦   favicon.ico
+    ¦       ¦   index.html
+    ¦       ¦   main.ts
+    ¦       ¦   polyfills.ts
+    ¦       ¦   styles.css
+    ¦       ¦   test.ts
+    ¦       ¦   
+    ¦       +---app
+    ¦       ¦   ¦   app-routing.module.ts
+    ¦       ¦   ¦   app.component.css
+    ¦       ¦   ¦   app.component.html
+    ¦       ¦   ¦   app.component.spec.ts
+    ¦       ¦   ¦   app.component.ts
+    ¦       ¦   ¦   app.module.ts
+    ¦       ¦   ¦   
+    ¦       ¦   +---common
+    ¦       ¦   ¦       person.spec.ts
+    ¦       ¦   ¦       person.ts
+    ¦       ¦   ¦       
+    ¦       ¦   +---components
+    ¦       ¦   ¦   +---person
+    ¦       ¦   ¦       +---person-list
+    ¦       ¦   ¦       ¦       person-list.component.css
+    ¦       ¦   ¦       ¦       person-list.component.html
+    ¦       ¦   ¦       ¦       person-list.component.spec.ts
+    ¦       ¦   ¦       ¦       person-list.component.ts
+    ¦       ¦   ¦       ¦       
+    ¦       ¦   ¦       +---person-new
+    ¦       ¦   ¦       ¦       person-new.component.css
+    ¦       ¦   ¦       ¦       person-new.component.html
+    ¦       ¦   ¦       ¦       person-new.component.spec.ts
+    ¦       ¦   ¦       ¦       person-new.component.ts
+    ¦       ¦   ¦       ¦       
+    ¦       ¦   ¦       +---person-search
+    ¦       ¦   ¦               person-search.component.css
+    ¦       ¦   ¦               person-search.component.html
+    ¦       ¦   ¦               person-search.component.spec.ts
+    ¦       ¦   ¦               person-search.component.ts
+    ¦       ¦   ¦               
+    ¦       ¦   +---services
+    ¦       ¦           person.service.spec.ts
+    ¦       ¦           person.service.ts
+    ¦       ¦           
+    ¦       +---assets
+    ¦       ¦       .gitkeep
+    ¦       ¦       
+    ¦       +---environments
+    ¦               environment.prod.ts
+    ¦               environment.ts
+    ¦               
+    +---main
+    ¦   +---java
+    ¦   ¦   +---com
+    ¦   ¦       +---alianza
+    ¦   ¦           +---demo
+    ¦   ¦               ¦   DemoApplication.java
+    ¦   ¦               ¦   
+    ¦   ¦               +---controller
+    ¦   ¦               ¦       PersonController.java
+    ¦   ¦               ¦       
+    ¦   ¦               +---dto
+    ¦   ¦               ¦       Mensaje.java
+    ¦   ¦               ¦       PersonDto.java
+    ¦   ¦               ¦       
+    ¦   ¦               +---entity
+    ¦   ¦               ¦       BaseEntity.java
+    ¦   ¦               ¦       Person.java
+    ¦   ¦               ¦       
+    ¦   ¦               +---repository
+    ¦   ¦               ¦       PersonRepository.java
+    ¦   ¦               ¦       
+    ¦   ¦               +---service
+    ¦   ¦                       PersonService.java
+    ¦   ¦                       
+    ¦   +---resources
+    ¦           alianza_data.sql
+    ¦           alianza_schema.sql
+    ¦           application-demo.properties
+    ¦           application-test.properties
+    ¦           application.properties
+    ¦           
+    +---test
+        +---java
+            +---com
+                +---alianza
+                    +---demo
+                        ¦   DemoApplicationTests.java
+                        ¦   
+                        +---controller
+                        ¦       PersonControllerTest.java
+                        ¦       
+                        +---service
+                                PersonServiceTest.java
+                                

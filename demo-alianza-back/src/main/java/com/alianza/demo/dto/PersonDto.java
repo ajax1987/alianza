@@ -2,25 +2,24 @@ package com.alianza.demo.dto;
 
 import java.time.LocalDateTime;
 
+import com.alianza.demo.entity.Person;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Data
 public class PersonDto {
 
-    @NotBlank(message="Name must not be blank")
-    @Size(min=3, message="Name must be at least 3 characters long")
+    @NotBlank(message="sharedKey must not be blank")
+    @Size(min=5, message="sharedKey must be at least 5 characters long")
     private String sharedKey;
     
-    @NotBlank(message="Name must not be blank")
-    @Size(min=3, message="Name must be at least 3 characters long")
+    @NotBlank(message="bussinesId must not be blank")
+    @Size(min=5, message="bussinesId must be at least 5 characters long")
     private String bussinesId;
 
     @NotBlank(message="Mobile number must not be blank")
@@ -30,5 +29,25 @@ public class PersonDto {
     @NotBlank(message="Email must not be blank")
     @Email(message = "Please provide a valid email address" )
     private String email;
+    
+    public Person toPerson() {
+    	
+    	Person person = new Person();
+    	
+        person.setSharedKey(sharedKey);
+        person.setBussinesId(bussinesId);
+        person.setEmail(email);
+        person.setMobileNumber(mobileNumber);
+        person.setCreatedAt(LocalDateTime.now());
+    	
+        /*return new Person()
+               .setSharedKey(sharedKey)
+               .setBussinesId(bussinesId)
+               .setEmail(email)
+               .setMobileNumber(mobileNumber);*/
+        return person;
+      }
+    
+
     
 }

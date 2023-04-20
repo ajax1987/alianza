@@ -1,4 +1,4 @@
-import { Component, ViewChild,OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild,OnInit, Output, EventEmitter,Input } from '@angular/core';
 import { Person } from 'src/app/common/person';
 import { PersonService } from 'src/app/services/person.service';
 import { Router } from '@angular/router';
@@ -15,6 +15,8 @@ export class PersonNewComponent implements OnInit {
 
 
   @Output() miEvento = new EventEmitter<Person>();
+
+  @Input() childMessage: string | undefined;
 
   formValue!: FormGroup;
 
@@ -62,7 +64,7 @@ export class PersonNewComponent implements OnInit {
     this.personService.save(this.personobj).subscribe({
       next: (v) => { console.log(v) },
       error: (e) => {
-        alert("Error "+ e.error.mensaje);
+        alert("Error "+ e.error.errors);
         console.log(e)
       },
       complete: () => {
@@ -73,7 +75,20 @@ export class PersonNewComponent implements OnInit {
         this.miEvento.emit(this.personobj);
       }
     })
-
   }
+
+
+  UpdateShowBtn()
+  {
+    this.btnUpdateShow = true;
+    this.btnSaveShow = false;
+  }
+  SaveShowBtn()
+  {
+    this.btnUpdateShow = false;
+    this.btnSaveShow = true;
+  }
+
+
 
 }

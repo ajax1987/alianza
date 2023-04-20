@@ -9,6 +9,8 @@ import { Person } from '../common/person';
 export class PersonService {
 
   personURL = 'http://localhost:8080/api/alianza/';
+  
+  //personURL = 'http://alianza-testing-env.eba-wgsr7wzr.us-east-1.elasticbeanstalk.com/api/alianza/';
 
   constructor(private httpClient: HttpClient) { }
 

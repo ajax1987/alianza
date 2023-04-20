@@ -12,8 +12,10 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,6 +43,7 @@ import jakarta.persistence.PersistenceContext;
 @SpringBootTest
 @AutoConfigureMockMvc
 //@ActiveProfiles("test")
+@TestMethodOrder(OrderAnnotation.class)
 public class PersonControllerTest {
 
 	@Mock
@@ -79,12 +82,14 @@ public class PersonControllerTest {
 	}
 	
 	@Test
+	@Order(1)
 	public void delete() throws Exception 
 	{		
 		this.mockMvc.perform(MockMvcRequestBuilders.delete("/api/alianza/delete/{id}", 1))
-		            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+		             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 		            .andDo(print())
-	                .andExpect(status().isAccepted());
+	                .andExpect(status().isAccepted())
+	                .andExpect(jsonPath("$.mensaje").value("Person Delete"));;
 	}
 	
 	@Test
@@ -138,13 +143,13 @@ public class PersonControllerTest {
 				    .content(objectMapper.writeValueAsString(person)))
 				    .andExpect(content().contentType(MediaType.APPLICATION_JSON))
 				    .andExpect(status().isCreated())
-				    .andExpect(jsonPath("$.mensaje").value("person create"));
+				    .andExpect(jsonPath("$.mensaje").value("Person Create"));
 
 	}
 	
 	@AfterEach
 	public void afterEach() {
-		jdbc.execute(sqlDeletePerson);
+	  jdbc.execute(sqlDeletePerson);
 	}
 
 
