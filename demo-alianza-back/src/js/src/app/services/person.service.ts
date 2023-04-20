@@ -3,14 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Person } from '../common/person';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PersonService {
 
-  personURL = 'http://localhost:8080/api/alianza/';
-  
-  //personURL = 'http://alianza-testing-env.eba-wgsr7wzr.us-east-1.elasticbeanstalk.com/api/alianza/';
+  personURL = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -30,7 +30,7 @@ export class PersonService {
     return this.httpClient.post<any>(this.personURL + 'create', person);
   }
 
-  public update(personId: number, person: Person): Observable<any> {
+  public update(personId:number, person: Person): Observable<any> {
     return this.httpClient.put<any>(this.personURL + `update/${personId}`, person);
   }
 

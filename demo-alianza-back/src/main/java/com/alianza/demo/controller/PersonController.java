@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,6 +63,19 @@ public class PersonController {
 		personService.save(personDto.toPerson());
 		return new ResponseEntity<>(new Mensaje("Person Create"), HttpStatus.CREATED);
 	}
+	
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody PersonDto personDto){
+  
+        if(!personService.existsById(id)) {
+        	log.info("PersonID not exist!: {}", id);
+			throw new PersonIdNotFoundException("PersonID " + id + "  not exist!");
+        }
+        Person person = personService.getOne(id).get();       
+		personService.save(personDto.toPerson(person));
+		return new ResponseEntity<>(new Mensaje("Person Update"), HttpStatus.OK);
+
+    }
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") int id) {

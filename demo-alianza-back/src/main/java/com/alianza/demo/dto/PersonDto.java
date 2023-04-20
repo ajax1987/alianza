@@ -30,10 +30,11 @@ public class PersonDto {
     @Email(message = "Please provide a valid email address" )
     private String email;
     
+
     public Person toPerson() {
     	
     	Person person = new Person();
-    	
+
         person.setSharedKey(sharedKey);
         person.setBussinesId(bussinesId);
         person.setEmail(email);
@@ -48,6 +49,22 @@ public class PersonDto {
         return person;
       }
     
+    
+   public Person toPerson(Person person) {
+    	
+        person.setSharedKey(sharedKey);
+        person.setBussinesId(bussinesId);
+        person.setEmail(email);
+        person.setMobileNumber(mobileNumber);
+        person.setCreatedAt(LocalDateTime.now());
+    	
+        /*return new Person()
+               .setSharedKey(sharedKey)
+               .setBussinesId(bussinesId)
+               .setEmail(email)
+               .setMobileNumber(mobileNumber);*/
+        return person;
+      }
 
     
 }

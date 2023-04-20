@@ -19,13 +19,16 @@ public class DemoApplication {
 	{
 	   String[] allowDomains = new String[2];
 	   allowDomains[0] = "http://localhost:4200";
-	   allowDomains[1] = "http://localhost:8080";
+	   //allowDomains[1] = "http://localhost:8080";
 
 	   System.out.println("CORS configuration....");
 	   return new WebMvcConfigurer() {
 	      @Override
 	      public void addCorsMappings(CorsRegistry registry) {
-	         registry.addMapping("/**").allowedOrigins(allowDomains);
+	         registry.addMapping("/**")
+	                 .allowedOrigins(allowDomains)
+                     .allowedMethods("GET", "POST", "PUT","DELETE");
+	         
 	      }
 	   };
 	}
